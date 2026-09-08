@@ -1,0 +1,13 @@
+.DS_Store
+~$*.docx
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+.venv/
+venv/
+
+# Original, unabridged source material and anything superseded by the
+# curated repo content -- kept locally for reference, not published.
+/obsoleto/
