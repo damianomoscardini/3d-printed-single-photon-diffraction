@@ -56,7 +56,7 @@ Full derivations, apparatus details and discussion: [`report/main.pdf`](report/m
 1. extracts a 1D intensity profile through the pattern (auto-detecting the center; no manual minima-picking),
 2. fits it directly against the theoretical Fraunhofer intensity,
 
-$$I(x) = C \cos^2\!\left(\frac{\pi x}{\beta}\right)\operatorname{sinc}^2\!\left(\frac{x}{\alpha}\right) \qquad \text{(single slit: drop the } \cos^2 \text{ term)}$$
+$$I(x) = C \cos^2\!\left(\frac{\pi x}{\beta}\right)\text{sinc}^2\!\left(\frac{x}{\alpha}\right) \qquad \text{(single slit: drop the } \cos^2 \text{ term)}$$
 
 3. and converts the fitted $\alpha = \lambda D/a$, $\beta = \lambda D/b$ back into a slit width $a$ and separation $b$, with uncertainty propagated from the fit and from your wavelength/distance measurements.
 
@@ -93,13 +93,13 @@ Easiest path: open the repository in the provided dev container (`.devcontainer/
 modules/diffraction_fit.py   analysis code (reusable functions)
 diffraction_fit.ipynb        notebook front-end, run on the images below
 acquisitions/                curated scans: the 3 quantitative patterns + 3 extra geometries
-stampa 3D/                   3D-printable parts
+3d files/                    3D-printable parts (STL, DWG)
 report/                      full writeup (main.typ / main.pdf), and img/ with the apparatus photos this README also uses
 ```
 
 ## License
 
-Code (`modules/`, `diffraction_fit.ipynb`) is licensed under the [GNU GPLv3](LICENSE). The report (`report/`) is licensed separately under [CC BY-SA 4.0](report/LICENSE).
+Code (`modules/`, `diffraction_fit.ipynb`) is licensed under the [GNU GPLv3](LICENSE). The report (`report/`) and the 3D-printable files (`3d files/`) are licensed separately under CC BY-SA 4.0 — see [`report/LICENSE`](report/LICENSE) and [`3d files/LICENSE`](3d%20files/LICENSE).
 
 ## References
 
