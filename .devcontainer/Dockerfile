@@ -11,10 +11,7 @@ RUN pip install --no-cache-dir \
     numpy \
     scipy \
     matplotlib \
-    pillow \
-    jupyterlab \
-    notebook
+    pillow
 
-EXPOSE 8888
 WORKDIR /workspace
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+CMD ["bash"]

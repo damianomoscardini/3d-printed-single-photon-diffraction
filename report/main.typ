@@ -97,7 +97,7 @@ with $C$ an overall scale. $alpha$ and $beta$ (and hence $a$ and $b$) are obtain
 
 The third measurement, with a microscope, is a direct geometric measurement of the printed slit and needs no optical model.
 
-The repository accompanying this report includes cleaned-up, English versions of the code behind both film-based fits (`modules/diffraction_fit.py`, demonstrated in `diffraction_fit.ipynb`), reproducing the results below.
+The repository accompanying this report includes cleaned-up, English versions of the code behind both fits, as two self-contained scripts: `high_intensity_fit.py` and `single_photon_fit.py`, reproducing the results below.
 
 = Results
 

@@ -4,7 +4,7 @@ A home-built double-slit diffraction experiment in the "single-photon" regime �
 
 ![Apparatus schematic](report/img/apparatus_schematic.png)
 
-This started as a small physics project, later shown at a couple of student conferences. This repository is the retired, consolidated version of that work: one clean writeup instead of several conference-specific ones, and a rewritten, general-purpose analysis tool instead of the original one-off fitting scripts.
+This started as a small physics project, later shown at a couple of student conferences. This repository is the retired, consolidated version of that work: one clean writeup instead of several conference-specific ones, and the original analysis scripts cleaned up and translated to English.
 
 ## The idea
 
@@ -51,10 +51,15 @@ Full derivations, apparatus details and discussion: [`report/main.pdf`](report/m
 
 ## Analysis code
 
-[`diffraction_fit.ipynb`](diffraction_fit.ipynb) reproduces the two results above, using the reusable functions in [`modules/diffraction_fit.py`](modules/diffraction_fit.py) — cleaned-up, English versions of the two Python scripts originally used to analyze these patterns:
+Two self-contained scripts reproduce the two results above — cleaned-up, English versions of the Python scripts originally used to analyze these patterns. Each one prints its fit results and saves a figure.
 
-- `fit_minima_positions`: fits hand-identified minima positions against fringe order (used for the high-intensity pattern, whose saturated peaks rule out a direct intensity fit).
-- `fit_intensity_profile`: fits the whole intensity profile directly against the theoretical Fraunhofer intensity (used for the single-photon pattern).
+- [`high_intensity_fit.py`](high_intensity_fit.py): fits hand-identified minima positions against fringe order (needed for the high-intensity pattern, whose saturated peaks rule out a direct intensity fit).
+- [`single_photon_fit.py`](single_photon_fit.py): fits the whole intensity profile directly against the theoretical Fraunhofer intensity (used for the single-photon pattern).
+
+```bash
+python high_intensity_fit.py
+python single_photon_fit.py
+```
 
 ### Requirements & setup
 
@@ -62,16 +67,15 @@ The project targets Python 3.12. The exact dependency list used in the provided 
 
 ```
 numpy scipy matplotlib pillow
-jupyterlab notebook
 ```
 
-Easiest path: open the repository in the provided dev container (`.devcontainer/`), which builds a ready-to-use image with everything installed and starts JupyterLab. Alternatively, install the packages above with pip in your own environment and open `diffraction_fit.ipynb`.
+Easiest path: open the repository in the provided dev container (`.devcontainer/`), which builds a ready-to-use image with everything installed. Alternatively, install the packages above with pip in your own environment and run the scripts directly.
 
 ## Repository layout
 
 ```
-modules/diffraction_fit.py   analysis code (reusable functions)
-diffraction_fit.ipynb        notebook front-end, run on the images below
+high_intensity_fit.py        minima-position fit for the high-intensity pattern
+single_photon_fit.py         intensity-profile fit for the single-photon pattern
 acquisitions/                curated scans: the 3 quantitative patterns + 3 extra geometries
 3d files/                    3D-printable parts (STL, DWG)
 report/                      full writeup (main.typ / main.pdf), and img/ with the apparatus photos this README also uses
