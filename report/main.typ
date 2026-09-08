@@ -97,6 +97,8 @@ with $C$ an overall scale. $alpha$ and $beta$ (and hence $a$ and $b$) are obtain
 
 The third measurement, with a microscope, is a direct geometric measurement of the printed slit and needs no optical model.
 
+The repository accompanying this report includes cleaned-up, English versions of the code behind both film-based fits (`modules/diffraction_fit.py`, demonstrated in `diffraction_fit.ipynb`), reproducing the results below.
+
 = Results
 
 #figure(
@@ -141,10 +143,6 @@ An FDM printer can extrude any 2D outline, not just a pair of rectangular slits.
   image("/acquisitions/triangle/pattern.jpg", width: 60%),
   caption: [Triangular aperture, $D approx 2.4$ m.],
 )
-
-= This repository's analysis tool
-
-Alongside this report, the repository includes a rewritten, general-purpose version of the single-photon intensity-fit method described in @method (`modules/diffraction_fit.py`, demonstrated in `diffraction_fit.ipynb`): given any scanned diffraction photo, it auto-detects the pattern center, extracts its intensity profile, and fits it directly against $I(x)$ above — no manual minima-picking, no per-image hardcoded parameters. Run on the single-photon pattern above, it reproduces the published result closely. Run on the non-attenuated pattern, it correctly recovers the fringe spacing $b$ but, as expected from the saturation argument in @method, not the slit width $a$ — a limitation the notebook documents rather than hides. The original minima-position method used for that image (@method) was not similarly generalized, since it inherently requires identifying individual minima on each new image by hand.
 
 = Conclusion
 

@@ -49,32 +49,12 @@ Since the printer can extrude any 2D outline, not just a pair of slits, a few ot
 
 Full derivations, apparatus details and discussion: [`report/main.pdf`](report/main.pdf) (source: `report/main.typ`; apparatus photos live in `report/img/` and are reused here directly, diffraction patterns are pulled from `acquisitions/` rather than duplicated — recompile with `typst compile --root . report/main.typ report/main.pdf` from the repository root).
 
-## Analysis tool
+## Analysis code
 
-[`diffraction_fit.ipynb`](diffraction_fit.ipynb) runs the fit and shows every result inline; the reusable code behind it is in [`modules/diffraction_fit.py`](modules/diffraction_fit.py). Given a scanned photo of a diffraction pattern, it:
+[`diffraction_fit.ipynb`](diffraction_fit.ipynb) reproduces the two results above, using the reusable functions in [`modules/diffraction_fit.py`](modules/diffraction_fit.py) — cleaned-up, English versions of the two Python scripts originally used to analyze these patterns:
 
-1. extracts a 1D intensity profile through the pattern (auto-detecting the center; no manual minima-picking),
-2. fits it directly against the theoretical Fraunhofer intensity,
-
-$$I(x) = C \cos^2\!\left(\frac{\pi x}{\beta}\right)\text{sinc}^2\!\left(\frac{x}{\alpha}\right) \qquad \text{(single slit: drop the } \cos^2 \text{ term)}$$
-
-3. and converts the fitted $\alpha = \lambda D/a$, $\beta = \lambda D/b$ back into a slit width $a$ and separation $b$, with uncertainty propagated from the fit and from your wavelength/distance measurements.
-
-```python
-from diffraction_fit import analyze_diffraction_image, summarize, plot_fit
-
-result = analyze_diffraction_image(
-    "path/to/your_scan.jpg",
-    pattern="double",               # or "single"
-    pixel_size_mm=...,              # mm per pixel in your scan
-    wavelength_nm=..., sigma_wavelength_nm=...,
-    distance_mm=..., sigma_distance_mm=...,
-)
-print(summarize(result))
-plot_fit(result)
-```
-
-Worth knowing before you point it at your own photo: this method needs the film/sensor response to be linear (unsaturated) in the region you're fitting. The notebook's own "high intensity" example was deliberately overexposed to make its minima easy to see by eye, and the fit visibly can't recover a trustworthy slit width from it — only the fringe spacing survives, since that only depends on minima *positions*. The notebook walks through this case in more detail.
+- `fit_minima_positions`: fits hand-identified minima positions against fringe order (used for the high-intensity pattern, whose saturated peaks rule out a direct intensity fit).
+- `fit_intensity_profile`: fits the whole intensity profile directly against the theoretical Fraunhofer intensity (used for the single-photon pattern).
 
 ### Requirements & setup
 
