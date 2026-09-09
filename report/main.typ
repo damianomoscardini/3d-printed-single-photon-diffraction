@@ -3,6 +3,8 @@
 #set text(font: "New Computer Modern", size: 11pt, lang: "en")
 #set heading(numbering: "1.1")
 #set par(justify: true, leading: 0.65em)
+#set math.equation(numbering: "(1)")
+#let munit(val, unit) = [#val\u{202F}#unit] // #munit("0.4", "mm")
 
 #show heading.where(level: 1): it => {
   pagebreak(weak: true)
@@ -15,15 +17,20 @@
 
 #align(center, [
   #set par(justify: false)
-  #text(size: 20pt, weight: "bold", "3D-Printed \"Single-Photon\" Double-Slit Diffraction")
+  #v(9cm)
+  #text(size: 20pt, weight: "bold", "3D-Printed \"Single-Photon\" Diffraction Experiment")
 
-  #v(0.8em)
+  #v(1cm)
   #text(size: 12pt, "Damiano Moscardini") \
   #text(size: 10pt, "Pisa, Italy")
 
-  #v(1.5em)
+  #v(9cm)
   #link("https://creativecommons.org/licenses/by-sa/4.0/")[
-    #image("img/cc-by-sa.svg", height: 1.1cm)
+    #image("img/cc-by-sa.svg", width: 1.4cm)
+  ]
+  #v(0.2em)
+  #text(size: 8pt)[
+    This report is licensed under a #link("https://creativecommons.org/licenses/by-sa/4.0/")[CC BY-SA 4.0] license.
   ]
 ])
 
@@ -31,38 +38,75 @@
 // ------------------------------------------------------------
 = Introduction
 
-FDM 3D printing makes it possible to prototype and build inexpensive, easy-to-use experimental apparatus. This project replicates, using entirely home-printed components, a double-slit diffraction experiment operated in the "single-photon" regime — a version of Young's experiment that carries particular historical and conceptual weight, since observing an interference pattern build up one detection event at a time is one of the clearest demonstrations that light is neither a classical wave nor a classical stream of particles.
+FDM 3D printing makes it possible to prototype and build inexpensive, easy-to-use experimental apparatus. This project replicates, using home-printed components, a double-slit diffraction experiment operated in the "single-photon" regime — a version of Young's experiment that carries particular historical and conceptual weight.
 
-Detecting genuine single photons needs single-photon detectors, which are neither cheap nor simple. The approach here is narrower and much cheaper: attenuate an ordinary laser enormously with neutral-density filters and let Poisson statistics do the rest, so that "clicks" (in this case, grains of exposed film) are, with better than 99% probability, individually due to single photons. The apparatus — laser mount, filter housing, double slit, and film holder — is entirely 3D-printed in PLA on a stock, unmodified Creality Ender 3, aside from the glass/optical filters themselves. This report does not claim to demonstrate anything new about quantum optics; the result is methodological: this experiment, historically performed with specialized laboratory equipment, is reachable with a consumer 3D printer, off-the-shelf optical filters, and photographic film, at a small fraction of the usual cost.
+= Experimental setup
 
-= Experimental apparatus
+== Light source
 
 #figure(
   image("img/apparatus_schematic.png", width: 95%),
-  caption: [Schematic of the apparatus: laser, five neutral-density filters $F_1 .. F_5$ (angled to avoid back-reflection into the laser cavity — a straight-through arrangement was found to destabilize the laser's output), double slit, and photographic film at distance $D$. Each dot on the film represents one detection event; the pattern is built up one grain at a time over the exposure.],
-)
+  caption: [Schematic of the apparatus.],
+) <apparatus_schematic_figure>
 
-The beam from a Class II laser (Quarton VLM-520-52-LPT, wavelength $lambda = (520 plus.minus 15)$ nm, power $P < 1$ mW) passes through a stack of up to five neutral-density filters $F_1$ through $F_5$, each individually characterized with a photodiode and a multimeter so its transmission coefficient is known. In this apparatus $F_1 = F_2 = F_3 = F_4 lt.eq 0.8%$ and $F_5 lt.eq 8%$, so the full five-filter stack (used for the single-photon exposure) has a combined transmittance of order $F_1 F_2 F_3 F_4 F_5 approx 3 times 10^(-10)$; a partial stack of just $F_1, F_2$ (used for the brighter, non-attenuated exposure) transmits of order $0.8% times 0.8% approx 6 times 10^(-5)$. The attenuated beam then passes through a 3D-printed double slit, and the resulting diffraction pattern is recorded on black-and-white photographic film held in a 3D-printed mount at a distance $D$ of a few meters.
+The experimental setup is shown in @apparatus_schematic_figure. A #munit(5, "V") green laser (model: Quarton VLM-520-52-LPT) emits light with a wavelength of $lambda = #munit($(520 plus.minus 15)$, "nm")$ . The beam passes through a series of five neutral density filters, labeled F1 to F5, with each label indicating its transmission coefficient, measurable with a photodiode and a multimeter. The assembly of one filter is shown in Figure 3. The filters are angled with respect to the beam direction, in order to avoid back-reflection into the laser cavity. The total transmittance of the filters combined, $T_"tot"$ is given by the product of the transmittance of each filter,
+
+$ T_"tot" = F_1 dot F_2 dot F_3 dot F_4 dot F_5. $
 
 #figure(
-  image("img/apparatus.png", width: 65%),
-  caption: [The laser and filter housing. The wooden base measures 22 cm #sym.times 18 cm. All structural parts are 3D-printed; only the laser diode itself and the glass neutral-density filters are not.],
+  image("img/apparatus.png", width: 100%),
+  caption: [Photograph of the light source. The wooden base measures #munit(22, "cm") #sym.times #munit(18, "cm"). The mounting base has holes for screws that fix it to the wooden base and allow the height to be adjusted correctly; inside, further holes hold neodymium magnets (#munit(10, "mm") diameter, #munit(3, "mm") height) that keep the lid in place during acquisition.],
+) <apparatus_figure>
+
+#figure(
+  image("img/filter_assembly.png", width: 100%), 
+  caption: [One neutral-density filter, fully assembled and disassembled: the printed container (with magnets for attaching the lid), the lid, and the assembled filter with the laser passing through it. Each filter's case measures #munit(5, "cm") #sym.times #munit(5, "cm") #sym.times #munit(5, "cm").],
 )
 
-#grid(
-  columns: (1fr, 1fr),
-  gutter: 1.5em,
-  figure(image("img/filter_assembly.png", width: 100%), caption: [One neutral-density filter, fully assembled and disassembled: the printed container (with magnets for attaching the lid), the lid, and the assembled filter with the laser passing through it. Each filter's case measures 5 cm #sym.times 5 cm #sym.times 0.5 cm.]),
-  figure(image("img/film_holder.png", width: 100%), caption: [The film holder: the mount that positions the photographic film at distance $D$ from the slit and keeps it flat during the (sometimes hours-long) exposure. Its wooden base measures 11 cm #sym.times 33 cm.]),
+A double-slit is placed after the filters, and the resulting diffraction pattern is recorded on a screen at distance $D$. The average number of photons simultaneously present between the slit and the screen in a single travel, N is given by
+
+$ N = frac(E_"laser", E_gamma) dot T_"tot" = frac(P dot Delta t, h dot nu) dot T_"tot" = frac(P dot frac(D, c), h dot frac(c, lambda)) dot T_"tot" = frac(P dot D dot lambda, h dot c^2) dot T_"tot", $
+
+where $P$ is the laser power, $h$ is Planck's constant and $c$ is the speed of light. In this experiment, $P < #munit("1", "mW")$ (the laser is classified as Class II), $D < #munit("5", "m")$ (the size of the room where the experiment was performed), $F_1 = F_2 = F_3 = F_4 <= #munit("0.8", "%")$ and $F_5 <= #munit("8", "%")$, yielding $N < 0.02$ under these conditions.
+
+== How to get a "single-photon"
+
+An attenuated laser *is not* a single-photon source,
+as the number of photons it emits follows a Poisson
+distribution [1]. However, when the light intensity is
+reduced such that $N << 1$, the probability of having
+two or more photons in the same travel becomes
+negligible. The fraction of single-photon events
+among all events where at least one photon is
+emitted, $S$ is given by
+
+$ S(N) = frac(P(1), P(n gt.eq 1)) = frac(P(1), 1 - P(0)) = frac(N e^(-N), 1 - e^(-N)), $
+
+where $P$ is the probability of having $n$ photons per transit, given by the Poisson distribution. if $N < 0.02$, a value of $S > #munit("99", "%")$ is obtained.
+
+== How to detect a "single-photon"
+
+To maintain the experiment's affordability, single-photon detectors were not considered. Instead, a photographic film was used, being held in place by a 3D printed mount, as shown in Figure 4.
+
+#figure(
+  image("img/film_holder.png", width: 100%), 
+  caption: [The film holder: the mount that positions the photographic film at distance $D$ from the slit and keeps it flat during the (sometimes hours-long) exposure. Its wooden base measures 11 cm #sym.times 33 cm.]
 )
 
-== The double slit
+The holder also has holes for screws, so it can be fixed to the work surface and aligned with the rest of the apparatus. Its front section is detachable: a small block with 0.4 mm tall tabs that the film slides into and is held flat by, with four magnets on its back that let it snap onto the vertical back plate. The film itself is not magnetic — only the block it slides into is. This split matters because the film has to be unpacked, unrolled, cut to size, and slid into the block in complete darkness before the laser can be switched on, which is very difficult to do by touch alone. With the room lit, the back plate is positioned and fixed to the work surface, aligned with the rest of the apparatus; the lights are then turned off, the film is unpacked and slid into the front block, and the block is snapped back onto the back plate by its own magnets — the film only has to be handled by touch, while the magnets make sure everything lands back in the correct position.
 
-#grid(
-  columns: (1fr, 1fr),
-  gutter: 1.5em,
-  figure(image("img/double_slit.png", width: 100%), caption: [The double slit actually used in the experiment. The whole printed part measures 5 cm #sym.times 5 cm #sym.times 0.5 cm.]),
-  figure(image("img/slit_definition.png", width: 78%), caption: [Definition of the slit width $a$ and slit separation $b$ used throughout this report.]),
+== Fabrication of the double slit
+
+The 3D printer used was a stock Creality Ender 3, with a resolution in the horizontal (X-Y) plane set by the #munit(0.4, "mm") nozzle diameter, which sets the theoretical minimum slit width. 
+
+#figure(
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    image("img/double_slit.jpg", width: 90%),
+    image("img/double_slit_iso.png", width: 82%),
+  ),
+  caption: [The double slit actually used in the experiment. The whole printed part measures #munit(5, "cm") #sym.times #munit(5, "cm") #sym.times #munit(0.5, "cm").],
 )
 
 === Fabrication constraints
@@ -150,6 +194,6 @@ This project does not demonstrate anything new in single-photon optics — the u
 
 = References
 
-Migdall, A., Polyakov, S. V., Fan, J., Bienfang, J. C. (eds.). _Single-Photon Generation and Detection: Physics and Applications_. Academic Press, 2013.
+[1] Migdall, A., Polyakov, S. V., Fan, J., Bienfang, J. C. (eds.). _Single-Photon Generation and Detection: Physics and Applications_. Academic Press, 2013.
 
-Hecht, E. _Optics_. 5th edition, Pearson, 2016.
+[2] Hecht, E. _Optics_. 5th edition, Pearson, 2016.
