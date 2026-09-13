@@ -97,7 +97,7 @@ The holder also has holes for screws, so it can be fixed to the work surface and
 
 == Fabrication of the double slit
 
-The 3D printer used was a stock Creality Ender 3, with a resolution in the horizontal (X-Y) plane set by the #munit(0.4, "mm") nozzle diameter, which sets the theoretical minimum slit width. 
+The 3D printer used was a stock Creality Ender 3, with a resolution in the horizontal (X-Y) plane set by the #munit(0.4, "mm") nozzle diameter, which sets the theoretical minimum slit width. Narrower slits can be achieved with careful tuning, such as raising the nozzle temperature above the filament's recommended setting, lowering the nozzle closer to the print bed, and slowing the print down — all of which let the extruded plastic spread out slightly more than it normally would. This works, but at a cost: the resulting slits are noticeably less straight and less identical to one another than slits printed at the recommended settings, which is reflected in the comparatively large uncertainty on $a$ in the results below. The minimum slit *separation* $b$, by contrast, is set by the minimum step of the printer's linear guides, independent of the nozzle: in this apparatus, that minimum step is what determined the smallest achievable value of $b$.
 
 #figure(
   grid(
@@ -109,25 +109,9 @@ The 3D printer used was a stock Creality Ender 3, with a resolution in the horiz
   caption: [The double slit actually used in the experiment. The whole printed part measures #munit(5, "cm") #sym.times #munit(5, "cm") #sym.times #munit(0.5, "cm").],
 )
 
-=== Fabrication constraints
-
-The double slit is the one component where the printer's own limitations show up directly in the physics. Its resolution in the horizontal (X-Y) plane is set by the diameter of the nozzle, 0.4 mm, which is therefore the theoretical lower bound on the printable slit width $a$. Narrower slits can be coaxed out of the printer by raising the nozzle temperature above the filament's recommended setting, lowering the nozzle closer to the print bed, and slowing the print down — all of which let the extruded plastic spread out slightly more than it normally would. This works, but at a cost: the resulting slits are noticeably less straight and less identical to one another than slits printed at the recommended settings, which is reflected in the comparatively large uncertainty on $a$ in the results below. The minimum slit *separation* $b$, by contrast, is set by the minimum step of the printer's linear guides, independent of the nozzle: in this apparatus, that minimum step is what determined the smallest achievable value of $b$.
-
-= The single-photon regime
-
-An attenuated laser is not a true single-photon source: the number of photons it emits in any given interval follows a Poisson distribution,
-$ P(n) = frac(N^n e^(-N), n!), $
-where $N$ is the mean number of photons simultaneously in flight between the slit and the screen. $N$ can be written as the mean energy delivered per transit time, divided by the energy of a single photon, times the total filter transmittance:
-$ N = frac(P dot Delta t, h nu) dot T_"tot" = frac(P dot (D\/c), h c \/ lambda) dot T_"tot" = frac(P dot D dot lambda, h dot c^2) dot T_"tot", quad T_"tot" = F_1 F_2 F_3 F_4 F_5, $
-with $P$ the laser power, $D$ the slit-to-screen distance, $lambda$ the wavelength, $h$ Planck's constant and $c$ the speed of light. Plugging in this apparatus's numbers — $P < 1$ mW, $D approx 4$ m, $lambda < 535$ nm, $T_"tot" approx 4 times 10^(-9)$ (four filters engaged), $h approx 6.6 times 10^(-34)$ J#sym.dot.op s, $c approx 2.99 times 10^8$ m/s — gives $N < 0.02$.
-
-When $N lt.double 1$, the probability of two or more photons being in flight at the same time becomes negligible, so almost every detection event corresponds to a genuinely single photon. Precisely, the fraction of "click" events (at least one photon arriving) that are single-photon events is
-$ S(N) = frac(P(1), P(n gt.eq 1)) = frac(P(1), 1 - P(0)) = frac(N e^(-N), 1 - e^(-N)). $
-With $N < 0.02$ this gives $S > 99%$: strictly speaking this is not a single-photon source, hence the quotation marks used throughout, but under these conditions it is a very good approximation of one. Since there is no affordable single-photon detector on the receiving end either, the "detector" is ordinary black-and-white photographic film, which integrates the arriving photons over a very long exposure — the single-photon pattern in this report was built up over roughly eight hours, one photon at a time, in exactly the same way the historical single-photon interference experiments were performed with photomultipliers decades ago.
-
 = Method: two independent film analyses <method>
 
-The width $a$ and separation $b$ of the double slit were determined three independent ways: directly under a microscope, from a deliberately *non-attenuated* exposure clear enough to pick out individual diffraction minima by eye, and from the *attenuated*, single-photon-regime exposure. The two film-based methods use different analysis strategies, for a physical reason worth making explicit.
+The width $a$ and separation $b$ of the double slit were determined three independent ways: directly under a microscope, from a *non-attenuated* exposure clear enough to pick out individual diffraction minima, and from the *attenuated*, single-photon-regime exposure. The two film-based methods use different analysis strategies, for a physical reason worth making explicit.
 
 The non-attenuated exposure (Kentmere Pan 400 film, developed at an effective ISO of 400, exposed for about 40 s, with only $F_1 = F_2 lt.eq 0.8%$ engaged and $D = (4021 plus.minus 5)$ mm) was deliberately overexposed to make the fringes easy to see by eye — which saturates the film's response near the pattern's center, so the recorded optical density stops tracking the true light intensity there. Fitting the *positions* of the diffraction minima against fringe order sidesteps this entirely, since a minimum's location does not depend on how saturated the peaks around it are. Writing $x_"diff"(n)$ for the position of the $n$-th diffraction (envelope) minimum and $x_"int"(n)$ for the position of the $n$-th interference minimum,
 $ x_"diff" (n) = frac(lambda D, a) dot n, quad x_"int"(n) = frac(lambda D, b) dot (n + 1/2), $
