@@ -1,5 +1,5 @@
 """
-Single-photon (attenuated) double-slit diffraction pattern: fit the whole
+"Single-photon" (attenuated) double-slit diffraction pattern: fit the whole
 intensity profile directly against the theoretical Fraunhofer intensity
 to recover the slit width a and separation b.
 

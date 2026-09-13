@@ -31,7 +31,7 @@ This license covers the contents of this directory and the images/ directory
 at the repository root, as described above. The rest of the repository (the
 code, high_intensity_fit.py and single_photon_fit.py) is licensed separately
 under the GNU General Public License v3.0 -- see the LICENSE file at the root
-of the repository. poster.pdf and presentation.pdf are included for
+of the repository. materials/poster.pdf and materials/presentation.pdf are included for
 reference only and are not covered by either license (parts of both use a
 third-party conference/template layout) -- contact the author before reusing
 them.
