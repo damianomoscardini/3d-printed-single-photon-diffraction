@@ -41,4 +41,4 @@ Easiest path: open the repository in the provided dev container (`.devcontainer/
 
 ## License
 
-Code (`high_intensity_fit.py`, `single_photon_fit.py`) is licensed under the [GNU GPLv3](LICENSE). The image (`images/`) and the 3D-printable files (`3d files/`) are licensed separately under CC BY-SA 4.0 — see [`3d files/LICENSE`](3d%20files/LICENSE). `poster.pdf` and `presentation.pdf` are included for reference only and are not covered by either license (parts of both use a third-party conference/template layout) — contact the author before reusing them.
+Code (`high_intensity_fit.py`, `single_photon_fit.py`) is licensed under the [GNU GPLv3](LICENSE). The image (`images/`) and the 3D-printable files (`3d files/`) are licensed separately under CC BY-SA 4.0 — see [`3d files/LICENSE`](3d%20files/LICENSE). `poster.pdf` and `presentation.pdf` are included for reference only and are not covered by either license.
