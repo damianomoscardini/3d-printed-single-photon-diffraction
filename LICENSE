@@ -16,10 +16,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-This notice applies to the code in this repository (modules/ and
-diffraction_fit.ipynb). The report in report/ and the 3D-printable files in
-"3d files/" are licensed separately under CC BY-SA 4.0 -- see report/LICENSE
-and "3d files/LICENSE".
+This notice applies to the code (high_intensity_fit.py and
+single_photon_fit.py). The images in "images/" and the 3D-printable files in
+"3d files/" are licensed separately under CC BY-SA 4.0 -- see
+"3d files/LICENSE". poster.pdf and presentation.pdf are included for
+reference only and are not covered by either license.
 
 ------------------------------------------------------------------------
 

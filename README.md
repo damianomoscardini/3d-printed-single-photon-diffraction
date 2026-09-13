@@ -2,9 +2,9 @@
 
 A home-built double-slit diffraction experiment in the "single-photon" regime — laser, filters, slits, and every mount that holds them — printed on a stock, budget FDM printer (Creality Ender 3), for a fraction of the cost of a lab-grade setup.
 
-![Apparatus schematic](report/img/apparatus_schematic.png)
+![Apparatus schematic](images/apparatus_schematic.png)
 
-This started as a small physics project, later shown at a couple of student conferences. This repository is the retired, consolidated version of that work: one clean writeup instead of several conference-specific ones, and the original analysis scripts cleaned up and translated to English.
+This started as a small physics project, shown at a couple of student conferences (see `poster.pdf` and `presentation.pdf` below). This repository collects the apparatus, the raw results, and the original analysis scripts, cleaned up and translated to English.
 
 ## The idea
 
@@ -20,12 +20,12 @@ There's no single-photon detector on the other end either — instead, black-and
 
 | | | |
 |---|---|---|
-| ![Laser and filter housing](report/img/apparatus.png) | ![Filter assembly](report/img/filter_assembly.png) | ![Printed double slit](report/img/double_slit.png) |
+| ![Laser and filter housing](images/apparatus.png) | ![Filter assembly](images/filter_assembly.png) | ![Printed double slit](images/double_slit_iso.png) |
 | Laser + filter housing (22 cm × 18 cm base) | One neutral-density filter, assembled | The printed double slit (5 cm × 5 cm × 0.5 cm) |
 
 The double slit is the one component where the printer's own limits show up directly: XY resolution is set by the 0.4 mm nozzle, which bounds how narrow a slit can be printed, and the minimum slit *separation* is set by the printer's linear-guide step. Pushing past the recommended extrusion settings (hotter nozzle, closer to the bed, slower print) buys narrower slits at the cost of straightness and slit-to-slit consistency.
 
-The film sits in its own printed mount (`report/img/film_holder.png`) at the far end of the beam path; the filters are angled inside their housing specifically to keep back-reflections from destabilizing the laser.
+The film sits in its own printed mount (`images/film_holder.png`) at the far end of the beam path; the filters are angled inside their housing specifically to keep back-reflections from destabilizing the laser.
 
 ## Results
 
@@ -47,7 +47,7 @@ Since the printer can extrude any 2D outline, not just a pair of slits, a few ot
 |---|---|---|---|
 | ![Single slit](acquisitions/single-slit/pattern.jpg) | ![Circular aperture](acquisitions/circle/pattern.jpg) | ![Square aperture](acquisitions/square/pattern.jpg) | ![Triangular aperture](acquisitions/triangle/pattern.jpg) |
 
-Full derivations, apparatus details and discussion: [`report/main.pdf`](report/main.pdf) (source: `report/main.typ`; apparatus photos live in `report/img/` and are reused here directly, diffraction patterns are pulled from `acquisitions/` rather than duplicated — recompile with `typst compile --root . report/main.typ report/main.pdf` from the repository root).
+More background and pictures of the apparatus: [`poster.pdf`](poster.pdf) and [`presentation.pdf`](presentation.pdf), as shown at a couple of student conferences.
 
 ## Analysis code
 
@@ -77,13 +77,14 @@ Easiest path: open the repository in the provided dev container (`.devcontainer/
 high_intensity_fit.py        minima-position fit for the high-intensity pattern
 single_photon_fit.py         intensity-profile fit for the single-photon pattern
 acquisitions/                curated scans: the 3 quantitative patterns + 3 extra geometries
+images/                      apparatus photos used in this README
 3d files/                    3D-printable parts (STL, DWG)
-report/                      full writeup (main.typ / main.pdf), and img/ with the apparatus photos this README also uses
+poster.pdf, presentation.pdf conference materials with more background and pictures
 ```
 
 ## License
 
-Code (`modules/`, `diffraction_fit.ipynb`) is licensed under the [GNU GPLv3](LICENSE). The report (`report/`) and the 3D-printable files (`3d files/`) are licensed separately under CC BY-SA 4.0 — see [`report/LICENSE`](report/LICENSE) and [`3d files/LICENSE`](3d%20files/LICENSE).
+Code (`high_intensity_fit.py`, `single_photon_fit.py`) is licensed under the [GNU GPLv3](LICENSE). The apparatus photos (`images/`) and the 3D-printable files (`3d files/`) are licensed separately under CC BY-SA 4.0 — see [`3d files/LICENSE`](3d%20files/LICENSE). `poster.pdf` and `presentation.pdf` are included for reference only and are not covered by either license (parts of both use a third-party conference/template layout) — contact the author before reusing them.
 
 ## References
 

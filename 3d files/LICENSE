@@ -1,8 +1,9 @@
 Copyright (c) 2026 Damiano Moscardini
 
-This work (the 3D-printable files in this directory -- STL and DWG source files)
-is licensed under a Creative Commons Attribution-ShareAlike 4.0 International
-License (CC BY-SA 4.0).
+This work (the 3D-printable files in this directory -- STL and DWG source
+files -- and, under the same terms, the photos and diagrams in "images/" at
+the root of the repository) is licensed under a Creative Commons
+Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
 
 You are free to:
   - Share   -- copy and redistribute the material in any medium or format
@@ -26,11 +27,14 @@ implied (see Section 5 of the full legal code below) -- in particular, no
 warranty of fitness for 3D printing or of dimensional accuracy. The author
 accepts no liability for how these files are used, printed, or modified.
 
-This license applies only to the contents of this directory (the 3D-printable
-files). The report in report/ is also CC BY-SA 4.0, under its own identical
-LICENSE file in that directory. The rest of the repository (the code in
-modules/ and the notebook) is licensed separately under the GNU General Public
-License v3.0 -- see the LICENSE file at the root of the repository.
+This license covers the contents of this directory and the images/ directory
+at the repository root, as described above. The rest of the repository (the
+code, high_intensity_fit.py and single_photon_fit.py) is licensed separately
+under the GNU General Public License v3.0 -- see the LICENSE file at the root
+of the repository. poster.pdf and presentation.pdf are included for
+reference only and are not covered by either license (parts of both use a
+third-party conference/template layout) -- contact the author before reusing
+them.
 
 Full legal code:        https://creativecommons.org/licenses/by-sa/4.0/legalcode
 Human-readable summary:  https://creativecommons.org/licenses/by-sa/4.0/
